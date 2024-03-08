@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  scrollbar-color: rgba(128, 128, 128, 0.5) rgba(0, 0, 0, 0.1); /* thumb / track */
+  scrollbar-width: thin;
+}
+
+html,
+body {
+  @apply bg-neutral-900 text-white p-4;
+}
+
+label {
+  @apply block w-full;
+}
+
+label span {
+  @apply block mb-2;
+}
+
+select,
+select[multiple] {
+  @apply w-full rounded bg-neutral-800 border border-neutral-700;
+}
+
+pre {
+  @apply bg-black p-4 rounded;
+}
+
+hr {
+  @apply opacity-10;
+}
