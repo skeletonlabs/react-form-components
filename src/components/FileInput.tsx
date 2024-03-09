@@ -7,16 +7,14 @@ import React from "react";
 interface FileInput {
   name: string;
   id: string;
-  accept?: string;
-  multiple?: boolean;
+  inputRest?: object;
   onChange: React.Dispatch<React.SetStateAction<File[]>>;
 }
 
 export const FileInput: React.FC<FileInput> = ({
   name = "",
   id = "",
-  accept,
-  multiple,
+  inputRest,
   onChange,
 }) => {
   function handleOnChange(event: any) {
@@ -28,8 +26,7 @@ export const FileInput: React.FC<FileInput> = ({
       type="file"
       name={name}
       id={id}
-      accept={accept}
-      multiple={multiple}
+      {...inputRest}
       onChange={handleOnChange}
     />
   );

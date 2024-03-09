@@ -15,7 +15,7 @@ function App() {
   ]);
   const [checkboxState, setCheckboxState] = useState<boolean>(false);
   const [radioState, setRadioState] = useState<string>("foo");
-  const [fileInputState, setFileIputState] = useState<File[]>([]);
+  const [fileInputState, setFileInputState] = useState<File[]>([]);
 
   useEffect(() => {
     console.log(fileInputState);
@@ -121,13 +121,17 @@ function App() {
         <hr />
 
         {/* File Input */}
-        {/* fileInputState | setFileIputState */}
+        {/* fileInputState | setFileInputState */}
         <label>
           <span>File Input</span>
           <FileInput
             name="fileTest"
             id="fileTest"
-            onChange={setFileIputState}
+            inputRest={{
+              multiple: true,
+              accept: "image/*"
+            }}
+            onChange={setFileInputState}
           />
         </label>
         <pre>(see console log for updates)</pre>
