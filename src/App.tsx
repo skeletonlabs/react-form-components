@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import "./App.css";
 import { Select } from "./components/Select.tsx";
 import { SelectMulti } from "./components/SelectMulti.tsx";
@@ -16,6 +16,11 @@ function App() {
   const [checkboxState, setCheckboxState] = useState<boolean>(false);
   const [radioState, setRadioState] = useState<string>("foo");
   const [fileInputState, setFileInputState] = useState<File[]>([]);
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if(event.target.files) {
+      setFileInputState(Array.from(event.target.files));
+    }
+  }
 
   useEffect(() => {
     console.log(fileInputState);
@@ -127,11 +132,9 @@ function App() {
           <FileInput
             name="fileTest"
             id="fileTest"
-            inputRest={{
-              multiple: true,
-              accept: "image/*"
-            }}
-            onChange={setFileInputState}
+            multiple={true}
+            accept="image/*"
+            onChange={handleFileChange}
           />
         </label>
         <pre>(see console log for updates)</pre>
